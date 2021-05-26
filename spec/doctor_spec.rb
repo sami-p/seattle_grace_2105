@@ -25,5 +25,11 @@ RSpec.describe Doctor do
 
       expect(meredith.education).to eq("Harvard University")
     end
+
+    it 'has a salary' do
+      meredith = Doctor.new({name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", salary: 100_000})
+
+      expect(meredith.salary).to eq(100000)
+    end
   end
 end
