@@ -16,4 +16,9 @@ class Hospital
     end
     salary
   end
+
+  def lowest_paid_doctor
+    lowest_paid = doctors.min_by { |doc| doc.salary }
+    lowest_paid.name
+  end
 end
