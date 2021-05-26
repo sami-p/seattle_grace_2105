@@ -44,5 +44,13 @@ RSpec.describe Hospital do
 
       expect(seattle_grace.total_salary).to eq(190000)
     end
+
+    it 'can return the lowest paid doctor' do
+      meredith = Doctor.new({name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", salary: 100_000})
+      alex = Doctor.new({name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University", salary: 90_000})
+      seattle_grace = Hospital.new("Seattle Grace", "Richard Webber", [meredith, alex])
+
+      expect(seattle_grace.lowest_paid_doctor).to eq("Alex Karev")
+    end
   end
 end
