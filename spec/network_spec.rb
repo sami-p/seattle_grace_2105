@@ -23,8 +23,8 @@ RSpec.describe Network do
     end
   end
 
-  describe '#add_hospital' do
-    it 'can add hospital to #hospitals array' do
+  describe 'adding hospitals' do
+    it 'can #add_hospital to #hospitals array' do
       meredith = Doctor.new({name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", salary: 100_000})
       alex = Doctor.new({name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University", salary: 90_000})
       seattle_grace = Hospital.new("Seattle Grace", "Richard Webber", [meredith, alex])
@@ -39,6 +39,23 @@ RSpec.describe Network do
       gsmn.add_hospital(grey_sloan)
 
       expect(gsmn.hospitals).to eq([seattle_grace, grey_sloan])
+    end
+
+    it 'can return #highest_paid_doctor in network' do
+      meredith = Doctor.new({name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", salary: 100_000})
+      alex = Doctor.new({name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University", salary: 90_000})
+      seattle_grace = Hospital.new("Seattle Grace", "Richard Webber", [meredith, alex])
+
+      miranda = Doctor.new({name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University", salary: 150_000})
+      derek = Doctor.new({name: "Derek Sheperd", specialty: "Neurosurgery", education: "University of Pennsylvania", salary: 125_000})
+      grey_sloan = Hospital.new("Grey Sloan Memorial", "Larry Maxwell", [miranda, derek])
+
+      gsmn = Network.new("Greater Seattle Medical Network")
+
+      gsmn.add_hospital(seattle_grace)
+      gsmn.add_hospital(grey_sloan)
+
+      expect(gsmn.highest_paid_doctor).to eq(miranda)
     end
   end
 end
