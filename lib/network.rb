@@ -18,4 +18,16 @@ class Network
     end
     each_highest.max_by { |doctor| doctor.salary }
   end
+
+  def doctors_by_hospital
+    hash = Hash.new
+    @hospitals.each do |hospital|
+      names = []
+      hospital.doctors.map do |doctor|
+        names << doctor.name
+      end
+      hash[hospital] = names
+    end
+    hash
+  end
 end
