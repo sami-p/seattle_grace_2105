@@ -18,7 +18,13 @@ class Hospital
   end
 
   def lowest_paid_doctor
-    lowest_paid = doctors.min_by { |doc| doc.salary }
+    lowest_paid = @doctors.min_by { |doc| doc.salary }
     lowest_paid.name
+  end
+
+  def specialties
+    @doctors.map do |doc|
+      doc.specialty
+    end 
   end
 end
