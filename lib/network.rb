@@ -10,4 +10,12 @@ class Network
   def add_hospital(hospital)
     @hospitals << hospital
   end
+
+  def highest_paid_doctor
+    each_highest = []
+    @hospitals.each do |hospital|
+      each_highest << hospital.doctors.max_by { |doc| doc.salary }
+    end
+    each_highest.max_by { |doctor| doctor.salary }
+  end
 end
